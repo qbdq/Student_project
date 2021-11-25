@@ -6,7 +6,7 @@ from django.utils import timezone
 
 #! Student abstract model
 class Student(models.Model):
-    name = models.CharField( max_length=50)
+    name = models.CharField(max_length=50, default="" ,editable=False)
     dob = models.DateField(default=timezone.now)
 
     class Meta:
@@ -23,10 +23,10 @@ class Bachelor(Student):
         first_year = ("1st" , "First year")
         second_year = ("2nd" , "Second year")
     
-    Year_of_study = models.CharField(max_length=50)
+    Year_of_study = models.CharField(max_length=50 , default="" ,editable=False)
     
     class Meta:
-        db_name = "Bachelor"
+        db_table = "Bachelor"
         verbose_name = "Bachelor"
         verbose_name_plural = "Bachelor"
 
@@ -38,6 +38,6 @@ class Terminal(Student):
     espmark = models.DecimalField( max_digits=2, decimal_places=2)
 
     class Meta:
-        db_name = "Terminal"
+        db_table = "Terminal"
         verbose_name = "Terminal"
         verbose_name_plural = "Terminals"
